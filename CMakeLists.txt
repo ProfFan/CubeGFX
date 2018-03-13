@@ -3,7 +3,7 @@ set(CMAKE_TOOLCHAIN_FILE STM32Toolchain.cmake)
 
 cmake_minimum_required(VERSION 3.6)
 
-project(CANBridge C ASM)
+project(CANBridge C CXX ASM)
 
 add_definitions(-DSTM32F407xx)
 add_definitions(-DUSE_HAL_LIBRARY)
@@ -19,6 +19,8 @@ set(CMAKE_C_FLAGS "${COMMON_FLAGS} -std=gnu99")
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections -mcpu=cortex-m4 -mthumb -T ${CMAKE_SOURCE_DIR}/STM32F407ZETx_FLASH.ld")
 
 set(USER_INCLUDE Inc)
+set(BSP_INCLUDE bsp/include)
+set(ROS_INCLUDE ros_lib ros_lib/*)
 set(CMSIS_DEVICE_INCLUDE Drivers/CMSIS/Device/ST/STM32F4xx/Include)
 set(CMSIS_INCLUDE Drivers/CMSIS/Include)
 set(HAL_INCLUDE Drivers/STM32F4xx_HAL_Driver/Inc)
@@ -29,6 +31,8 @@ set(RTOS_INCLUDE Middlewares/Third_Party/FreeRTOS/Source/include
     Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS)
 
 file(GLOB_RECURSE USER_INCLUDE_F ${USER_INCLUDE}/*.h)
+file(GLOB_RECURSE BSP_INCLUDE_F ${BSP_INCLUDE}/**.h ${BSP_INCLUDE}/**.hpp)
+file(GLOB_RECURSE ROS_INCLUDE_F ros_lib/*.h ${ROS_INCLUDE}/**.h ${ROS_INCLUDE}/**.hpp)
 file(GLOB_RECURSE CMSIS_DEVICE_INCLUDE_F ${CMSIS_DEVICE_INCLUDE}/*.h)
 file(GLOB_RECURSE CMSIS_INCLUDE_F ${CMSIS_INCLUDE}/*.h)
 file(GLOB_RECURSE HAL_INCLUDE_F ${HAL_INCLUDE}/*.h)
@@ -39,6 +43,10 @@ file(GLOB_RECURSE RTOS_INCLUDE_F ${RTOS_INCLUDE}/*.h
      Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/*.h)
 
 file(GLOB_RECURSE USER_SOURCES Src/*.c)
+file(GLOB_RECURSE BSP_SOURCES bsp/src/*.c
+        bsp/src/*.cpp)
+file(GLOB_RECURSE ROS_SOURCES ros_lib/*.c
+        ros_lib/*.cpp)
 file(GLOB_RECURSE HAL_SOURCES Drivers/STM32F4xx_HAL_DRIVER/Src/*.c)
 file(GLOB_RECURSE CMSIS_SYSTEM Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_STM32F4xx.c)
 file(GLOB_RECURSE CMSIS_STARTUP Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f407xx.s)
@@ -49,10 +57,10 @@ file(GLOB_RECURSE RTOS_SOURCES Middlewares/Third_Party/FreeRTOS/Source/*.c
      Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/*.c
      Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/*.c)
 
-set(SOURCE_FILES ${USER_SOURCES} ${USBD_SOURCES} ${RTOS_SOURCES} ${HAL_SOURCES} ${CMSIS_SYSTEM} ${CMSIS_STARTUP} STM32F407ZETx_FLASH.ld
-                 ${USER_INCLUDE_F} ${USBD_INCLUDE_F} ${RTOS_INCLUDE_F} ${CMSIS_DEVICE_INCLUDE_F} ${CMSIS_INCLUDE_F} ${HAL_INCLUDE_F})
+set(SOURCE_FILES ${USER_SOURCES} ${BSP_SOURCES} ${ROS_SOURCES} ${USBD_SOURCES} ${RTOS_SOURCES} ${HAL_SOURCES} ${CMSIS_SYSTEM} ${CMSIS_STARTUP} STM32F407ZETx_FLASH.ld
+                 ${USER_INCLUDE_F} ${BSP_INCLUDE_F} ${ROS_INCLUDE_F} ${USBD_INCLUDE_F} ${RTOS_INCLUDE_F} ${CMSIS_DEVICE_INCLUDE_F} ${CMSIS_INCLUDE_F} ${HAL_INCLUDE_F})
 
-include_directories(${USER_INCLUDE} ${USBD_INCLUDE} ${RTOS_INCLUDE} ${CMSIS_DEVICE_INCLUDE} ${CMSIS_INCLUDE} ${HAL_INCLUDE})
+include_directories(${USER_INCLUDE} ${BSP_INCLUDE} ${ROS_INCLUDE} ${USBD_INCLUDE} ${RTOS_INCLUDE} ${CMSIS_DEVICE_INCLUDE} ${CMSIS_INCLUDE} ${HAL_INCLUDE})
 
 add_executable(${PROJECT_NAME}.elf ${SOURCE_FILES})
 

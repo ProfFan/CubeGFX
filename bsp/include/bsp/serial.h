@@ -5,8 +5,6 @@
 #ifndef CHASSIS_SERIAL_H
 #define CHASSIS_SERIAL_H
 
-#include "usart.h"
-
 #include "usb_device.h"
 #include "usbd_cdc_if.h"
 

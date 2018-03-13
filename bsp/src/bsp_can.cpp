@@ -11,7 +11,6 @@
 osThreadId canTaskHandle;
 
 CAN *can1;
-CAN *can2;
 
 CanTxMsgTypeDef Tx1Message;
 CanRxMsgTypeDef Rx1Message;
@@ -85,13 +84,6 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef *_hcan) {
     __HAL_CAN_ENABLE_IT(can1->hcan, CAN_IT_FMP0);
     //HAL_CAN_Receive_IT(&hcan1, CAN_FIFO0);
   }
-
-  if (_hcan == can2->hcan) {
-    can2->processFrame(_hcan->pRx1Msg);
-
-    __HAL_CAN_ENABLE_IT(can2->hcan, CAN_IT_FMP1);
-    //HAL_CAN_Receive_IT(&hcan2, CAN_FIFO1);
-  }
 }
 
 void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *_hcan) {
@@ -100,16 +92,10 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *_hcan) {
     //__HAL_CAN_ENABLE_IT(can1->hcan, CAN_IT_FMP0);
     HAL_CAN_Receive_IT(&hcan1, CAN_FIFO0);
   }
-
-  if (_hcan == can2->hcan) {
-    __HAL_CAN_CLEAR_FLAG(can2->hcan, CAN_FLAG_FOV1);
-    HAL_CAN_Receive_IT(&hcan2, CAN_FIFO1);
-  }
 }
 
 void StartCANBusTask(void const *argument) {
   can1 = new CAN(&hcan1);
-  can2 = new CAN(&hcan2);
 
   CAN_FilterConfTypeDef CAN_FilterConfigStructure;
 
@@ -130,33 +116,13 @@ void StartCANBusTask(void const *argument) {
     }
   }
 
-  osDelay(10);
-
-  CAN_FilterConfigStructure.FilterNumber = 14;
-  CAN_FilterConfigStructure.FilterFIFOAssignment = CAN_FilterFIFO1;
-  if (HAL_CAN_ConfigFilter(&hcan2, &CAN_FilterConfigStructure) != HAL_OK) {
-    while(1){
-
-    }
-  }
-
   hcan1.pRxMsg = &Rx1Message;
   hcan1.pTxMsg = &Tx1Message;
-
-  hcan2.pRx1Msg = &Rx2Message;
-  hcan2.pTxMsg = &Tx2Message;
 
   osDelay(10);
 
   if (HAL_CAN_Receive_IT(&hcan1, CAN_FIFO0) != HAL_OK) {
     while (1) {
-
-    }
-  }
-  osDelay(10);
-
-  if (HAL_CAN_Receive_IT(&hcan2, CAN_FIFO1) != HAL_OK){
-    while(1){
 
     }
   }
@@ -187,9 +153,7 @@ void StartCANBusTask(void const *argument) {
       can1->errorCount += 1;
       HAL_CAN_Receive_IT(&hcan1, CAN_FIFO0);
     }
-    if(HAL_CAN_GetState(&hcan2)==HAL_CAN_STATE_READY){
-      HAL_CAN_Receive_IT(&hcan2, CAN_FIFO1);
-    }
+
     osDelay(1);
   }
 }
