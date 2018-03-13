@@ -45,14 +45,16 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-/* USER CODE BEGIN Includes */     
+/* USER CODE BEGIN Includes */
+
+#include "cmsis_os.h"
 
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
 
 /* USER CODE BEGIN Variables */
-
+extern osThreadId canTaskHandle;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
