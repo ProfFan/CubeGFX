@@ -44,6 +44,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usbd_cdc_if.h"
 /* USER CODE BEGIN INCLUDE */
+#include "cmsis_os.h"
 /* USER CODE END INCLUDE */
 
 /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
@@ -301,7 +302,7 @@ uint8_t CDC_Try_Send(uint8_t* Buf, uint16_t Len, uint16_t timeout)
   while (hcdc->TxState != 0){
     if(timeout<=0) return USBD_BUSY;
     timeout--;
-    osDelay(0);
+    osDelay(1);
   }
   USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
   result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);

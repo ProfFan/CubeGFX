@@ -45,8 +45,10 @@
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
 #include "can.h"
+#include "spi.h"
 #include "usb_device.h"
 #include "gpio.h"
+#include "fsmc.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -91,6 +93,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_CAN1_Init();
+  MX_FSMC_Init();
+  MX_SPI2_Init();
 
   /* USER CODE BEGIN 2 */
 

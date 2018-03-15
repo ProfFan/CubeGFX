@@ -48,9 +48,10 @@
 
 /* USER CODE BEGIN Includes */     
 
-#include "cmsis_os.h"
 #include "bsp/bsp_can.h"
 #include "bsp/serial.h"
+#include "bsp/display.h"
+#include "bsp/hptimer.h"
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -60,6 +61,8 @@ osThreadId defaultTaskHandle;
 extern osThreadId canTaskHandle;
 
 extern osThreadId serialTaskHandle;
+
+extern osThreadId displayTaskHandle;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
@@ -100,11 +103,14 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  osThreadDef(canTask, StartCANBusTask, osPriorityHigh, 0, 512);
+  osThreadDef(canTask, StartCANBusTask, osPriorityNormal, 0, 512);
   canTaskHandle = osThreadCreate(osThread(canTask), NULL);
 
-  osThreadDef(serialTask, StartSerialTask, osPriorityNormal, 0, 4096);
+  osThreadDef(serialTask, StartSerialTask, osPriorityHigh, 0, 8000);
   serialTaskHandle = osThreadCreate(osThread(serialTask), NULL);
+
+  osThreadDef(displayTask, StartDisplayTask, osPriorityHigh, 0, 512);
+  displayTaskHandle = osThreadCreate(osThread(displayTask), NULL);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -122,7 +128,9 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    HAL_GPIO_TogglePin(GPIO_LED_GPIO_Port, GPIO_LED_Pin);
+    GetCycleCount64();
+    osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */
 }

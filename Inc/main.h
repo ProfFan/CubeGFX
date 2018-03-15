@@ -53,6 +53,10 @@
 
 #define GPIO_LED_Pin GPIO_PIN_0
 #define GPIO_LED_GPIO_Port GPIOB
+#define TP_CS_Pin GPIO_PIN_12
+#define TP_CS_GPIO_Port GPIOB
+#define SD_CS_Pin GPIO_PIN_15
+#define SD_CS_GPIO_Port GPIOG
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
