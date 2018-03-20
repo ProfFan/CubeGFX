@@ -128,7 +128,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    HAL_GPIO_TogglePin(GPIO_LED_GPIO_Port, GPIO_LED_Pin);
+    //HAL_GPIO_TogglePin(GPIO_LED_GPIO_Port, GPIO_LED_Pin);
     GetCycleCount64();
     osDelay(1000);
   }

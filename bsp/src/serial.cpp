@@ -93,13 +93,12 @@ void StartSerialTask(void const *argument) {
     // AHRS Attitude
     if (HAL_GetTick() % 2) {
 
-
-
       canError_msg->data = can1->errorCount;
       pub_canError->publish(canError_msg);
 
       nh.spinOnce();
     }
+
 
 //    if(usbRxLen > 0){
 //      USBSerial1->rxISR(usbRxBuf,usbRxLen);
