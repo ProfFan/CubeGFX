@@ -1,6 +1,6 @@
 set(MCU_FAMILY STM32F4xx)
 set(CMAKE_TOOLCHAIN_FILE STM32Toolchain.cmake)
-
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 cmake_minimum_required(VERSION 3.6)
 
 project(CANBridge C CXX ASM)
@@ -17,6 +17,9 @@ set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
 set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -std=c++11")
 set(CMAKE_C_FLAGS "${COMMON_FLAGS} -std=gnu99")
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,--gc-sections -mcpu=cortex-m4 -mthumb -T ${CMAKE_SOURCE_DIR}/STM32F407ZETx_FLASH.ld")
+
+set(uGFX_DIR uGFX)
+find_package(uGFX COMPONENTS gos gos_freertos gdisp gdisp_fonts gdisp_image gfile gwin gevent gqueue gtimer ginput driver_ADS7843 driver_ILI93xx REQUIRED)
 
 set(USER_INCLUDE Inc)
 set(BSP_INCLUDE bsp/include)
@@ -49,7 +52,7 @@ file(GLOB_RECURSE ROS_SOURCES ros_lib/*.c
         ros_lib/*.cpp)
 file(GLOB_RECURSE HAL_SOURCES Drivers/STM32F4xx_HAL_DRIVER/Src/*.c)
 file(GLOB_RECURSE CMSIS_SYSTEM Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_STM32F4xx.c)
-file(GLOB_RECURSE CMSIS_STARTUP Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f407xx.s)
+file(GLOB_RECURSE CMSIS_STARTUP startup/startup_stm32f407xx.s)
 file(GLOB_RECURSE USBD_SOURCES Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/*.c
         Middlewares/ST/STM32_USB_Device_Library/Core/Src/*.c)
 file(GLOB_RECURSE RTOS_SOURCES Middlewares/Third_Party/FreeRTOS/Source/*.c
@@ -57,10 +60,10 @@ file(GLOB_RECURSE RTOS_SOURCES Middlewares/Third_Party/FreeRTOS/Source/*.c
      Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/*.c
      Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/*.c)
 
-set(SOURCE_FILES ${USER_SOURCES} ${BSP_SOURCES} ${ROS_SOURCES} ${USBD_SOURCES} ${RTOS_SOURCES} ${HAL_SOURCES} ${CMSIS_SYSTEM} ${CMSIS_STARTUP} STM32F407ZETx_FLASH.ld
+set(SOURCE_FILES ${USER_SOURCES} ${uGFX_SOURCES} ${BSP_SOURCES} ${ROS_SOURCES} ${USBD_SOURCES} ${RTOS_SOURCES} ${HAL_SOURCES} ${CMSIS_SYSTEM} ${CMSIS_STARTUP} STM32F407ZETx_FLASH.ld
                  ${USER_INCLUDE_F} ${BSP_INCLUDE_F} ${ROS_INCLUDE_F} ${USBD_INCLUDE_F} ${RTOS_INCLUDE_F} ${CMSIS_DEVICE_INCLUDE_F} ${CMSIS_INCLUDE_F} ${HAL_INCLUDE_F})
 
-include_directories(${USER_INCLUDE} ${BSP_INCLUDE} ${ROS_INCLUDE} ${USBD_INCLUDE} ${RTOS_INCLUDE} ${CMSIS_DEVICE_INCLUDE} ${CMSIS_INCLUDE} ${HAL_INCLUDE})
+include_directories(${USER_INCLUDE} ${uGFX_INCLUDE_DIRS} ${BSP_INCLUDE} ${ROS_INCLUDE} ${USBD_INCLUDE} ${RTOS_INCLUDE} ${CMSIS_DEVICE_INCLUDE} ${CMSIS_INCLUDE} ${HAL_INCLUDE})
 
 add_executable(${PROJECT_NAME}.elf ${SOURCE_FILES})
 

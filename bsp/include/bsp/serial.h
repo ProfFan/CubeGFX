@@ -46,6 +46,8 @@ public:
   void rxISR(const uint8_t *buffer, uint32_t length);
 
   void txService();
+
+  bool connected = false;
 private:
   USBD_HandleTypeDef *hcdc;
 

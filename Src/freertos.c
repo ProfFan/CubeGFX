@@ -3,6 +3,11 @@
   * File Name          : freertos.c
   * Description        : Code for freertos applications
   ******************************************************************************
+  * This notice applies to any and all portions of this file
+  * that are not between comment pairs USER CODE BEGIN and
+  * USER CODE END. Other portions of this file, whether 
+  * inserted by the user or by software development tools
+  * are owned by their respective copyright owners.
   *
   * Copyright (c) 2018 STMicroelectronics International N.V. 
   * All rights reserved.
@@ -106,10 +111,8 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(canTask, StartCANBusTask, osPriorityNormal, 0, 512);
   canTaskHandle = osThreadCreate(osThread(canTask), NULL);
 
-  osThreadDef(serialTask, StartSerialTask, osPriorityHigh, 0, 8000);
-  serialTaskHandle = osThreadCreate(osThread(serialTask), NULL);
 
-  osThreadDef(displayTask, StartDisplayTask, osPriorityHigh, 0, 512);
+  osThreadDef(displayTask, StartDisplayTask, osPriorityNormal, 0, 512);
   displayTaskHandle = osThreadCreate(osThread(displayTask), NULL);
   /* USER CODE END RTOS_THREADS */
 
@@ -125,6 +128,9 @@ void StartDefaultTask(void const * argument)
   MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN StartDefaultTask */
+  osThreadDef(serialTask, StartSerialTask, osPriorityNormal, 0, 512);
+  serialTaskHandle = osThreadCreate(osThread(serialTask), NULL);
+
   /* Infinite loop */
   for(;;)
   {

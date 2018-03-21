@@ -34,6 +34,13 @@ public:
 
   void WriteReg(uint16_t addr, uint16_t data);
 
+  uint16_t id = 0x0;
+
+  void Init();
+
+  void Clear(uint16_t color);
+
+  void Cursor(uint16_t x, uint16_t y);
 private:
   //FSMC_Bank1_TypeDef fsmc;
   LCD_TypeDef* _lcd =    ((LCD_TypeDef *) LCD_BASE);

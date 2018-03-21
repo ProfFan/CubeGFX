@@ -10,6 +10,7 @@ extern "C" {
 
 #include "bsp/serial.h"
 #include "bsp/bsp_can.h"
+#include "gui.h"
 #include "ros.h"
 
 #include <std_msgs/String.h>
@@ -34,7 +35,7 @@ void StartSerialTask(void const *argument) {
 
   USBSerial1 = new USBSerial(&hUsbDeviceFS);
 
-  ros::NodeHandle nh;
+  auto nh = new ros::NodeHandle();
 
   // auto *str_msg = new std_msgs::String();
   auto *encLF_msg = new std_msgs::Int32();
@@ -46,7 +47,7 @@ void StartSerialTask(void const *argument) {
   auto pub_encLF = new ros::Publisher("encoder/lf", encLF_msg);
   auto pub_encLB = new ros::Publisher("encoder/lb", encLB_msg);
   auto pub_encRF = new ros::Publisher("encoder/rf", encRF_msg);
-  auto pub_encRB = new ros::Publisher("encoder/rb", encLB_msg);
+  auto pub_encRB = new ros::Publisher("encoder/rb", encRB_msg);
 //
 //  auto sub_curLF = new ros::Subscriber<std_msgs::Int32>("current/lf", CURRENT_CALLBACK(motorLF));
 //  auto sub_curLB = new ros::Subscriber<std_msgs::Int32>("current/lb", CURRENT_CALLBACK(motorLB));
@@ -59,22 +60,22 @@ void StartSerialTask(void const *argument) {
 
   // char hello[15] = "UAVLab Rover!";
 
-  nh.initNode();
+  nh->initNode();
   //nh.advertise(*chatter);
-  nh.advertise(*pub_encLF);
-  nh.advertise(*pub_encLB);
-  nh.advertise(*pub_encRF);
-  nh.advertise(*pub_encRB);
+  nh->advertise(*pub_encLF);
+  nh->advertise(*pub_encLB);
+  nh->advertise(*pub_encRF);
+  nh->advertise(*pub_encRB);
 //
 //  nh.subscribe(*sub_curLF);
 //  nh.subscribe(*sub_curLB);
 //  nh.subscribe(*sub_curRF);
 //  nh.subscribe(*sub_curRB);
 
-  nh.advertise(*pub_canError);
+  nh->advertise(*pub_canError);
 
-  while (!nh.connected()){
-    nh.spinOnce();
+  while (!nh->connected()){
+    nh->spinOnce();
     osDelay(2);
   }
 
@@ -91,14 +92,18 @@ void StartSerialTask(void const *argument) {
     //chatter->publish(str_msg);
 
     // AHRS Attitude
-    if (HAL_GetTick() % 2) {
+    if (HAL_GetTick() % 5) {
 
       canError_msg->data = can1->errorCount;
       pub_canError->publish(canError_msg);
 
-      nh.spinOnce();
-    }
+      if(USBSerial1->connected != nh->connected()) {
+        USBSerial1->connected = nh->connected();
+        gwinSetText(ghLabel1, ((USBSerial1->connected) ? "LINK ACTIVE" : "LINK INACTIVE"), TRUE);
+      }
 
+      nh->spinOnce();
+    }
 
 //    if(usbRxLen > 0){
 //      USBSerial1->rxISR(usbRxBuf,usbRxLen);

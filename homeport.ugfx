@@ -1,0 +1,850 @@
+[
+    {
+        "Project": {
+            "Author": "Fan",
+            "Project File Version": "0.4"
+        }
+    },
+    {
+        "Settings": [
+            {
+                "User Data": {
+                    "Colors": [
+                        {
+                            "RGB": "0xFFFFFF",
+                            "User Name": "White"
+                        },
+                        {
+                            "RGB": "0x000000",
+                            "User Name": "Black"
+                        },
+                        {
+                            "RGB": "0x808080",
+                            "User Name": "Gray"
+                        },
+                        {
+                            "RGB": "0x0000FF",
+                            "User Name": "Blue"
+                        },
+                        {
+                            "RGB": "0xFF0000",
+                            "User Name": "Red"
+                        },
+                        {
+                            "RGB": "0xFF00FF",
+                            "User Name": "Magenta"
+                        },
+                        {
+                            "RGB": "0x008000",
+                            "User Name": "Green"
+                        },
+                        {
+                            "RGB": "0xFFFF00",
+                            "User Name": "Yellow"
+                        },
+                        {
+                            "RGB": "0x00FFFF",
+                            "User Name": "Cyan"
+                        },
+                        {
+                            "RGB": "0x00FF00",
+                            "User Name": "Lime"
+                        },
+                        {
+                            "RGB": "0x800000",
+                            "User Name": "Maroon"
+                        },
+                        {
+                            "RGB": "0x000080",
+                            "User Name": "Navy"
+                        },
+                        {
+                            "RGB": "0x808000",
+                            "User Name": "Olive"
+                        },
+                        {
+                            "RGB": "0x800080",
+                            "User Name": "Purple"
+                        },
+                        {
+                            "RGB": "0xC0C0C0",
+                            "User Name": "Silver"
+                        },
+                        {
+                            "RGB": "0x008080",
+                            "User Name": "Teal"
+                        },
+                        {
+                            "RGB": "0xFFA500",
+                            "User Name": "Orange"
+                        },
+                        {
+                            "RGB": "0xFFC0CB",
+                            "User Name": "Pink"
+                        },
+                        {
+                            "RGB": "0x87CEEB",
+                            "User Name": "SkyBlue"
+                        }
+                    ],
+                    "Fonts": [
+                        {
+                            "Anti-Aliased": false,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans10",
+                            "Path Converted": ":/fonts/DejaVuSans10.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 10,
+                            "User Name": "DejaVu Sans 10"
+                        },
+                        {
+                            "Anti-Aliased": false,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans12",
+                            "Path Converted": ":/fonts/DejaVuSans12.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 12,
+                            "User Name": "DejaVu Sans 12"
+                        },
+                        {
+                            "Anti-Aliased": false,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans16",
+                            "Path Converted": ":/fonts/DejaVuSans16.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 16,
+                            "User Name": "DejaVu Sans 16"
+                        },
+                        {
+                            "Anti-Aliased": false,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans20",
+                            "Path Converted": ":/fonts/DejaVuSans20.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 20,
+                            "User Name": "DejaVu Sans 20"
+                        },
+                        {
+                            "Anti-Aliased": false,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans24",
+                            "Path Converted": ":/fonts/DejaVuSans24.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 24,
+                            "User Name": "DejaVu Sans 24"
+                        },
+                        {
+                            "Anti-Aliased": false,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans32",
+                            "Path Converted": ":/fonts/DejaVuSans32.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 32,
+                            "User Name": "DejaVu Sans 32"
+                        },
+                        {
+                            "Anti-Aliased": true,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans12_aa",
+                            "Path Converted": ":/fonts/DejaVuSans12_aa.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 12,
+                            "User Name": "DejaVu Sans 12 Anti-Aliased"
+                        },
+                        {
+                            "Anti-Aliased": true,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans16_aa",
+                            "Path Converted": ":/fonts/DejaVuSans16_aa.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 16,
+                            "User Name": "DejaVu Sans 16 Anti-Aliased"
+                        },
+                        {
+                            "Anti-Aliased": true,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans20_aa",
+                            "Path Converted": ":/fonts/DejaVuSans20_aa.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 20,
+                            "User Name": "DejaVu Sans 20 Anti-Aliased"
+                        },
+                        {
+                            "Anti-Aliased": true,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans24_aa",
+                            "Path Converted": ":/fonts/DejaVuSans24_aa.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 24,
+                            "User Name": "DejaVu Sans 24 Anti-Aliased"
+                        },
+                        {
+                            "Anti-Aliased": true,
+                            "Family": "DejaVu Sans",
+                            "McuFont Name": "DejaVuSans32_aa",
+                            "Path Converted": ":/fonts/DejaVuSans32_aa.c",
+                            "Path TTF": ":/fonts/DejaVuSans.ttf",
+                            "Size": 32,
+                            "User Name": "DejaVu Sans 32 Anti-Aliased"
+                        }
+                    ],
+                    "Styles": [
+                        {
+                            "Colors": {
+                                "Background": "0xFFFFFF",
+                                "Disabled": {
+                                    "Edge": "0x808080",
+                                    "Fill": "0xE0E0E0",
+                                    "Progress": "0xC0E0C0",
+                                    "Text": "0xC0C0C0"
+                                },
+                                "Enabled": {
+                                    "Edge": "0x404040",
+                                    "Fill": "0xE0E0E0",
+                                    "Progress": "0x00E000",
+                                    "Text": "0x000000"
+                                },
+                                "Focus": "0x2A8FCD",
+                                "Pressed": {
+                                    "Edge": "0x404040",
+                                    "Fill": "0x808080",
+                                    "Progress": "0x00E000",
+                                    "Text": "0x404040"
+                                }
+                            },
+                            "User": "White"
+                        },
+                        {
+                            "Colors": {
+                                "Background": "0x000000",
+                                "Disabled": {
+                                    "Edge": "0x404040",
+                                    "Fill": "0x404040",
+                                    "Progress": "0x004000",
+                                    "Text": "0x808080"
+                                },
+                                "Enabled": {
+                                    "Edge": "0xC0C0C0",
+                                    "Fill": "0x606060",
+                                    "Progress": "0x008000",
+                                    "Text": "0xC0C0C0"
+                                },
+                                "Focus": "0x2A8FCD",
+                                "Pressed": {
+                                    "Edge": "0xC0C0C0",
+                                    "Fill": "0xE0E0E0",
+                                    "Progress": "0x008000",
+                                    "Text": "0xFFFFFF"
+                                }
+                            },
+                            "User": "Black"
+                        }
+                    ],
+                    "Widget Groups": [
+                        {
+                            "Handle": "GROUP_DEFAULT"
+                        }
+                    ]
+                }
+            },
+            {
+                "Generators": {
+                    "Application File": "gui.c",
+                    "Calibration File": "calibration.h",
+                    "Configuration File": "gfxconf.h",
+                    "Console Sample Text": true,
+                    "Filesystem File": "romfs_files.h",
+                    "Generate Event Loop": true,
+                    "Page Loop Delay": 0,
+                    "Script Task Build": {
+                        "Arguments": "",
+                        "Enabled": false,
+                        "Interpreter": "",
+                        "Script": ""
+                    },
+                    "Script Task Preview": {
+                        "Arguments": "",
+                        "Enabled": false,
+                        "Interpreter": "",
+                        "Script": ""
+                    },
+                    "StartUp Logo": false
+                }
+            },
+            {
+                "Editor": {
+                    "Grid Size": 10,
+                    "Snap Size": 10
+                }
+            },
+            {
+                "GDISP": {
+                    "Clipping": true,
+                    "Display Control": true,
+                    "Display Height": 272,
+                    "Display Width": 480,
+                    "Initial Backlight": 100,
+                    "Initial Contrast": 100,
+                    "Orientation": "Native",
+                    "StartUp Color": "White",
+                    "Text Anti-Aliased": true,
+                    "Text Kerning": false,
+                    "Text Unicode": false,
+                    "Validation": true
+                }
+            },
+            {
+                "GINPUT": {
+                    "Calibration Data": {
+                        "ax": 1,
+                        "ay": 1,
+                        "bx": 1,
+                        "by": 1,
+                        "cx": 0,
+                        "cy": 0
+                    },
+                    "Calibration Option": 0,
+                    "Keyboard Flags": 0,
+                    "Use Keyboard": false
+                }
+            },
+            {
+                "GWIN": {
+                    "Button Lazy Release": false,
+                    "Console Escape": false,
+                    "Console Float": false,
+                    "Console History": false,
+                    "Default Background Color": "White",
+                    "Default Font": "DejaVu Sans 16",
+                    "Default Foreground Color": "Black",
+                    "Default Style": "Black",
+                    "Flat Styling": true,
+                    "Imagebox Animation": false,
+                    "List Images": false,
+                    "WM Redraw Immediate": true,
+                    "WM Redraw SingleTop": true
+                }
+            },
+            {
+                "GFILE": {
+                    "FatFS": false,
+                    "NativeFS": false,
+                    "ROMFS": true,
+                    "ROMFS Additional Files": [
+                        ""
+                    ]
+                }
+            },
+            {
+                "GTIMER": {
+                    "Priority": "Normal",
+                    "Stack Size": 2048
+                }
+            },
+            {
+                "GEVENT": {
+                    "Assert No Resource": false,
+                    "Event Loop Timeout": 0,
+                    "Maximum Size": 32,
+                    "Maximum Source Listeners": 32
+                }
+            }
+        ]
+    },
+    {
+        "Backgrounds": [
+        ]
+    },
+    {
+        "Display Pages": [
+            {
+                "Page": [
+                    {
+                        "Background": 0,
+                        "Default": true,
+                        "Page Name": "Page0"
+                    },
+                    {
+                        "Console": {
+                            "Window": {
+                                "BgColor": "Silver",
+                                "Color": "Black",
+                                "Font": "0",
+                                "GHandle": "ghConsole1",
+                                "Item": {
+                                    "Height": 100,
+                                    "Lock Position": false,
+                                    "Lock Size": false,
+                                    "Snap": true,
+                                    "Width": 460,
+                                    "X": 10,
+                                    "Y": 170,
+                                    "Z": 0,
+                                    "isBackground": false
+                                },
+                                "Parent": "0",
+                                "Visible": true
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "PM2.5",
+                                "Window": {
+                                    "BgColor": "White",
+                                    "Color": "Black",
+                                    "Font": "0",
+                                    "GHandle": "ghLabel1",
+                                    "Item": {
+                                        "Height": 20,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 20,
+                                        "Y": 10,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "0.0",
+                                "Window": {
+                                    "BgColor": "White",
+                                    "Color": "Black",
+                                    "Font": "DejaVu Sans 32 Anti-Aliased",
+                                    "GHandle": "ghLabelPM25",
+                                    "Item": {
+                                        "Height": 40,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 110,
+                                        "X": 20,
+                                        "Y": 30,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "HCHO",
+                                "Window": {
+                                    "BgColor": "White",
+                                    "Color": "Black",
+                                    "Font": "0",
+                                    "GHandle": "ghLabel3",
+                                    "Item": {
+                                        "Height": 20,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 140,
+                                        "Y": 10,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "0.0",
+                                "Window": {
+                                    "BgColor": "White",
+                                    "Color": "Black",
+                                    "Font": "DejaVu Sans 32 Anti-Aliased",
+                                    "GHandle": "ghLabelHCHO",
+                                    "Item": {
+                                        "Height": 40,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 140,
+                                        "Y": 30,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "Temperature",
+                                "Window": {
+                                    "BgColor": "White",
+                                    "Color": "Black",
+                                    "Font": "0",
+                                    "GHandle": "ghLabel5",
+                                    "Item": {
+                                        "Height": 20,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 20,
+                                        "Y": 80,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "0.0",
+                                "Window": {
+                                    "BgColor": "White",
+                                    "Color": "Black",
+                                    "Font": "DejaVu Sans 32 Anti-Aliased",
+                                    "GHandle": "ghLabelTemp",
+                                    "Item": {
+                                        "Height": 40,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 20,
+                                        "Y": 100,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "Humidity",
+                                "Window": {
+                                    "BgColor": "White",
+                                    "Color": "Black",
+                                    "Font": "0",
+                                    "GHandle": "ghLabel7",
+                                    "Item": {
+                                        "Height": 20,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 140,
+                                        "Y": 80,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "0.0",
+                                "Window": {
+                                    "BgColor": "White",
+                                    "Color": "Black",
+                                    "Font": "DejaVu Sans 32 Anti-Aliased",
+                                    "GHandle": "ghLabelHumid",
+                                    "Item": {
+                                        "Height": 40,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 140,
+                                        "Y": 100,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "PM1.0",
+                                "Window": {
+                                    "BgColor": "Black",
+                                    "Color": "White",
+                                    "Font": "0",
+                                    "GHandle": "ghLabel26",
+                                    "Item": {
+                                        "Height": 20,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 260,
+                                        "Y": 10,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "0.0",
+                                "Window": {
+                                    "BgColor": "Black",
+                                    "Color": "White",
+                                    "Font": "DejaVu Sans 32 Anti-Aliased",
+                                    "GHandle": "ghLabelPM1",
+                                    "Item": {
+                                        "Height": 40,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 260,
+                                        "Y": 30,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "PM10",
+                                "Window": {
+                                    "BgColor": "Black",
+                                    "Color": "White",
+                                    "Font": "0",
+                                    "GHandle": "ghLabel28",
+                                    "Item": {
+                                        "Height": 20,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 260,
+                                        "Y": 80,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "Label": {
+                            "Auto Size Height": false,
+                            "Auto Size Width": false,
+                            "Border": false,
+                            "Widget": {
+                                "CustomDraw": "gwinLabelDrawJustifiedLeft",
+                                "CustomParam": "0",
+                                "Enabled": true,
+                                "Image": {
+                                    "Desktop Path": "Invalid",
+                                    "Need Manual Init": true
+                                },
+                                "Image Height Count": 1,
+                                "Style": "Default",
+                                "Text": "0.0",
+                                "Window": {
+                                    "BgColor": "Black",
+                                    "Color": "White",
+                                    "Font": "DejaVu Sans 32 Anti-Aliased",
+                                    "GHandle": "ghLabelPM10",
+                                    "Item": {
+                                        "Height": 40,
+                                        "Lock Position": false,
+                                        "Lock Size": false,
+                                        "Snap": true,
+                                        "Width": 120,
+                                        "X": 260,
+                                        "Y": 100,
+                                        "Z": 0,
+                                        "isBackground": false
+                                    },
+                                    "Parent": "0",
+                                    "Visible": true
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
