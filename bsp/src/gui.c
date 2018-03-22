@@ -4,6 +4,7 @@
 /* http://ugfx.org                                                            */
 /******************************************************************************/
 
+#include <memory.h>
 #include "colors.h"
 #include "widgetstyles.h"
 #include "gui.h"
@@ -92,6 +93,27 @@ void guiShowPage(unsigned pageIndex)
 	default:
 		break;
 	}
+}
+
+float calibrationData[] = {
+		0.0636238083,		// ax
+		-0.00274739182,		// bx
+		-1.23892915,		// cx
+		9.63997081e-05,		// ay
+		0.0909049287,		// by
+		-12.6382484 		// cy
+};
+
+bool_t LoadMouseCalibration(unsigned instance, void* data, size_t sz){
+	(void)instance;
+
+	if (sz != sizeof(calibrationData) || instance != 0) {
+		return FALSE;
+	}
+
+	memcpy(data, (void*)&calibrationData, sz);
+
+	return TRUE;
 }
 
 void guiCreate(void)

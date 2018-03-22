@@ -24,8 +24,8 @@ void StartCANBusTask(void const *argument);
 #include <functional>
 
 typedef struct {
-  CAN_RxHeaderTypeDef *header;
-  uint8_t *data;
+  CAN_RxHeaderTypeDef header;
+  uint8_t data[8];
 } CAN_RxMessageTypeDef;
 
 class CAN {
@@ -35,13 +35,14 @@ public:
 
   ~CAN();
 
-  int registerCallback(uint32_t messageID, std::function<void(CAN_RxHeaderTypeDef *, uint8_t *)> callback);
+  int registerCallback(uint32_t messageID, std::function<void(CAN_RxMessageTypeDef*)> callback);
 
-  void processFrame(CAN_RxMessageTypeDef message);
+  void processFrame(CAN_RxMessageTypeDef* message);
 
   CAN_HandleTypeDef *hcan;
 
   int32_t errorCount = 0;
+  uint64_t recvCount = 0;
 
   int sendMessage(uint32_t stdID, uint32_t extID, uint8_t *body, uint8_t size);
 
@@ -49,13 +50,13 @@ private:
   int tableSize = 0;
   uint32_t idTable[MAX_CAN_CALLBACK];
 
-  std::function<void(CAN_RxHeaderTypeDef *, uint8_t *)> callbackTable[MAX_CAN_CALLBACK];
+  std::function<void(CAN_RxMessageTypeDef *)> callbackTable[MAX_CAN_CALLBACK];
 
   cpp_freertos::MutexStandard* _mutex;
 };
 
 extern CAN *can1;
-extern CAN *can2;
+//extern CAN *can2;
 
 #endif
 

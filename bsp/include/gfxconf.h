@@ -131,6 +131,7 @@
 #define GFX_USE_GINPUT                               TRUE
 
 #define GINPUT_NEED_MOUSE                            TRUE
+#define GINPUT_TOUCH_USER_CALIBRATION_LOAD           TRUE
 //#define GINPUT_NEED_TOGGLE                           TRUE
 //#define GINPUT_NEED_DIAL                             TRUE
 

@@ -13,9 +13,15 @@ extern "C" {
 #include "gui.h"
 #include "ros.h"
 
+#include "std_msgs/MultiArrayLayout.h"
+#include "std_msgs/MultiArrayDimension.h"
 #include <std_msgs/String.h>
 #include <std_msgs/Float32.h>
 #include <std_msgs/Int32.h>
+#include <std_msgs/ByteMultiArray.h>
+#include <std_msgs/UInt8MultiArray.h>
+#include <bsp/bsp_can.h>
+#include <stm32f4xx_hal_can.h>
 
 osThreadId serialTaskHandle;
 
@@ -30,6 +36,8 @@ uint32_t usbRxLen = 0;
 
 USBSerial *USBSerial1;
 
+
+
 void StartSerialTask(void const *argument) {
   // int size;
 
@@ -37,17 +45,19 @@ void StartSerialTask(void const *argument) {
 
   auto nh = new ros::NodeHandle();
 
+  auto *canData_msg = new std_msgs::String();
   // auto *str_msg = new std_msgs::String();
-  auto *encLF_msg = new std_msgs::Int32();
-  auto *encLB_msg = new std_msgs::Int32();
-  auto *encRF_msg = new std_msgs::Int32();
-  auto *encRB_msg = new std_msgs::Int32();
+//  auto *encLF_msg = new std_msgs::Int32();
+//  auto *encLB_msg = new std_msgs::Int32();
+//  auto *encRF_msg = new std_msgs::Int32();
+//  auto *encRB_msg = new std_msgs::Int32();
 
+  auto pub_canData = new ros::Publisher("can/msgs", canData_msg);
   // auto chatter = new ros::Publisher("chatter", str_msg);
-  auto pub_encLF = new ros::Publisher("encoder/lf", encLF_msg);
-  auto pub_encLB = new ros::Publisher("encoder/lb", encLB_msg);
-  auto pub_encRF = new ros::Publisher("encoder/rf", encRF_msg);
-  auto pub_encRB = new ros::Publisher("encoder/rb", encRB_msg);
+//  auto pub_encLF = new ros::Publisher("encoder/lf", encLF_msg);
+//  auto pub_encLB = new ros::Publisher("encoder/lb", encLB_msg);
+//  auto pub_encRF = new ros::Publisher("encoder/rf", encRF_msg);
+//  auto pub_encRB = new ros::Publisher("encoder/rb", encRB_msg);
 //
 //  auto sub_curLF = new ros::Subscriber<std_msgs::Int32>("current/lf", CURRENT_CALLBACK(motorLF));
 //  auto sub_curLB = new ros::Subscriber<std_msgs::Int32>("current/lb", CURRENT_CALLBACK(motorLB));
@@ -62,10 +72,12 @@ void StartSerialTask(void const *argument) {
 
   nh->initNode();
   //nh.advertise(*chatter);
-  nh->advertise(*pub_encLF);
-  nh->advertise(*pub_encLB);
-  nh->advertise(*pub_encRF);
-  nh->advertise(*pub_encRB);
+
+  nh->advertise(*pub_canData);
+//  nh->advertise(*pub_encLF);
+//  nh->advertise(*pub_encLB);
+//  nh->advertise(*pub_encRF);
+//  nh->advertise(*pub_encRB);
 //
 //  nh.subscribe(*sub_curLF);
 //  nh.subscribe(*sub_curLB);
@@ -79,6 +91,17 @@ void StartSerialTask(void const *argument) {
     osDelay(2);
   }
 
+  canData_msg->data = (char*)malloc(sizeof(uint8_t) * (4 + 8 + 1));
+  ((char*)(canData_msg->data))[4 + 8] = 0;
+
+  std::function< void(CAN_RxMessageTypeDef*)> canCallback = [=](CAN_RxMessageTypeDef* msg){
+    ((uint32_t*)(canData_msg->data))[0] = msg->header.StdId;
+    memcpy((void *)(&(canData_msg->data[4])), msg->data, msg->header.DLC);
+    ((char*)(canData_msg->data))[4 + msg->header.DLC] = 0;
+    pub_canData->publish(canData_msg);
+  };
+
+  can1->registerCallback(0, canCallback);
 
   portTickType xLastWakeTime;
   const portTickType xFrequency = 1;
@@ -102,14 +125,15 @@ void StartSerialTask(void const *argument) {
         gwinSetText(ghLabel1, ((USBSerial1->connected) ? "LINK ACTIVE" : "LINK INACTIVE"), TRUE);
       }
 
-      nh->spinOnce();
+
     }
+
 
 //    if(usbRxLen > 0){
 //      USBSerial1->rxISR(usbRxBuf,usbRxLen);
 //      usbRxLen = 0;
 //    }
-
+    nh->spinOnce();
     USBSerial1->txService();
 
     vTaskDelayUntil(&xLastWakeTime, xFrequency);

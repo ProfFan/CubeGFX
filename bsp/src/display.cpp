@@ -4,6 +4,7 @@
 
 #include "bsp/display.h"
 #include <cmsis_os.h>
+#include <bsp/bsp_can.h>
 #include "gfx.h"
 #include "gui.h"
 #include "bsp/serial.h"
@@ -31,10 +32,26 @@ void StartDisplayTask(void const *argument){
 
   guiCreate();
 
+  uint32_t lastTick;
+
+  lastTick = HAL_GetTick();
+
+  GEvent* pe;
+
   while(true){
 
-    guiEventLoop();
+    if((HAL_GetTick() - lastTick) > 1000){
+      lastTick = HAL_GetTick();
 
+      gwinPrintf(ghConsole1, "[%u] CAN ERR: %d\n\r", lastTick , can1->errorCount);
+      gwinPrintf(ghConsole1, "[%u] CAN PKT: %d\n\r", lastTick , can1->recvCount);
+    }
+
+
+    pe = geventEventWait(&glistener, 0);
+    switch (pe->type) {
+
+    }
 //    HAL_GPIO_TogglePin(GPIO_LED_GPIO_Port, GPIO_LED_Pin);
 
 //    snprintf(printf_buf, sizeof(printf_buf), "%u", PMSData.pm2_5_atm);
