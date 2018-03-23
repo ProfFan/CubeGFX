@@ -18,7 +18,6 @@ extern "C" {
 #include <std_msgs/String.h>
 #include <std_msgs/Float32.h>
 #include <std_msgs/Int32.h>
-#include <std_msgs/ByteMultiArray.h>
 #include <std_msgs/UInt8MultiArray.h>
 #include <bsp/bsp_can.h>
 #include <stm32f4xx_hal_can.h>
@@ -45,7 +44,7 @@ void StartSerialTask(void const *argument) {
 
   auto nh = new ros::NodeHandle();
 
-  auto *canData_msg = new std_msgs::String();
+  auto *canData_msg = new std_msgs::UInt8MultiArray();
   // auto *str_msg = new std_msgs::String();
 //  auto *encLF_msg = new std_msgs::Int32();
 //  auto *encLB_msg = new std_msgs::Int32();
@@ -91,13 +90,21 @@ void StartSerialTask(void const *argument) {
     osDelay(2);
   }
 
-  canData_msg->data = (char*)malloc(sizeof(uint8_t) * (4 + 8 + 1));
-  ((char*)(canData_msg->data))[4 + 8] = 0;
+  canData_msg->layout.dim_length = 1;
+  canData_msg->layout.dim = new std_msgs::MultiArrayDimension();
+  canData_msg->layout.dim[0].stride = 4 + 8 + 1;
+  canData_msg->layout.dim[0].label = "";
+  canData_msg->layout.dim[0].size = 4 + 8 + 1;
+  canData_msg->layout.data_offset = 0;
+
+  canData_msg->data = (uint8_t *)malloc(sizeof(uint8_t) * (4 + 8 + 1));
+  canData_msg->data_length = 4 + 8 + 1;
+  (canData_msg->data)[4 + 8] = 0;
 
   std::function< void(CAN_RxMessageTypeDef*)> canCallback = [=](CAN_RxMessageTypeDef* msg){
     ((uint32_t*)(canData_msg->data))[0] = msg->header.StdId;
     memcpy((void *)(&(canData_msg->data[4])), msg->data, msg->header.DLC);
-    ((char*)(canData_msg->data))[4 + msg->header.DLC] = 0;
+    (canData_msg->data)[4 + msg->header.DLC] = 0;
     pub_canData->publish(canData_msg);
   };
 
