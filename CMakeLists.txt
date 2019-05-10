@@ -50,7 +50,7 @@ file(GLOB_RECURSE BSP_SOURCES bsp/src/*.c
         bsp/src/*.cpp)
 file(GLOB_RECURSE ROS_SOURCES ros_lib/*.c
         ros_lib/*.cpp)
-file(GLOB_RECURSE HAL_SOURCES Drivers/STM32F4xx_HAL_DRIVER/Src/*.c)
+file(GLOB_RECURSE HAL_SOURCES Drivers/STM32F4xx_HAL_Driver/Src/*.c)
 file(GLOB_RECURSE CMSIS_SYSTEM Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_STM32F4xx.c)
 file(GLOB_RECURSE CMSIS_STARTUP startup/startup_stm32f407xx.s)
 file(GLOB_RECURSE USBD_SOURCES Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/*.c

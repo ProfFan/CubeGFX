@@ -14,7 +14,7 @@
 
 extern "C" {
 #endif
-
+extern USBD_HandleTypeDef hUsbDeviceFS;
 void StartSerialTask(void const *argument);
 
 #ifdef __cplusplus
